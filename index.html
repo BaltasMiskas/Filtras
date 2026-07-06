@@ -1,11 +1,14 @@
 <div class="bm-page-wrapper">
+    <!-- Akcentinė antraštė viršuje -->
     <div class="bm-main-headline-container">
         <h2 class="bm-main-headline">Pasirinkimų pagalbininkas</h2>
     </div>
 
+    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
     <div class="bm-grid-squares-section">
         <div class="bm-squares-container">
             
+            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai -->
             <div class="bm-square-box bm-left-square">
                 <div class="bm-square-inner">
                     <p class="bm-categories-title">Atraskite Lietuvių dizainerių gaminius, tinkančius orams ir progai</p>
@@ -47,6 +50,7 @@
                 </div>
             </div>
 
+            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai -->
             <div class="bm-square-box bm-right-square">
                 <div class="bm-square-inner">
                     <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
@@ -63,7 +67,7 @@
 
 <style type="text/css">
 /* ==========================================================================
-       GRIEŽTAI IZOLIUOTI STILIAI - SUTVARKYTAS KONTEINERIO ELGESYS
+       GRIEŽTAI IZOLIUOTI STILIAI - RESPONSIVE SPRENDIMAS
        ========================================================================== */
 
     .bm-page-wrapper {
@@ -80,7 +84,7 @@
         font-weight: 300 !important;
     }
 
-    /* AKCENTINĖ ANTRAŠTĖ VIRŠUJE */
+    /* ANTRAŠTĖ */
     .bm-page-wrapper .bm-main-headline-container {
         width: 100% !important;
         text-align: center !important;
@@ -98,7 +102,7 @@
         padding: 0 !important;
     }
 
-    /* DVYNŲ KVADRATŲ TINKLELIS */
+    /* KONTEINERIS IR DESKTOP TINKLELIS */
     .bm-page-wrapper .bm-grid-squares-section {
         width: 100% !important;
         margin: 20px 0 30px 0 !important;
@@ -107,7 +111,7 @@
     .bm-page-wrapper .bm-squares-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        grid-auto-rows: 1fr !important; /* Užtikrina, kad abu kvadratai VISADA būtų vienodo aukščio */
+        grid-auto-rows: 1fr !important; /* Tobulas desktop dvynių efektas */
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -116,11 +120,10 @@
 
     .bm-page-wrapper .bm-square-box {
         width: 100% !important;
-        /* PAKEISTA: pašalintas aspect-ratio, kad naršyklė nenukirptų rėmelių */
-        min-height: 480px !important; /* Pradinis minimalus aukštis, palaikantis kvadrato proporciją dideliame ekrane */
+        min-height: 480px !important;
         background: #ffffff !important;
         border: 1px solid #eaeaea !important; 
-        padding: 40px 45px !important; /* Fiksuoti saugūs tarpai vietoje procentų */
+        padding: 40px 45px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -137,7 +140,7 @@
         margin: 0 auto !important;
     }
 
-    /* FILTRO FORMA IR ŽINGSNIAI */
+    /* FILTRO ELEMENTAI */
     .bm-page-wrapper .bm-filter-form {
         display: flex !important;
         flex-direction: column !important;
@@ -187,7 +190,7 @@
         text-align: left !important; 
     }
 
-    /* ĮVESTIES LAUKELIAI IR MYGTUKAS */
+    /* VALDYMO LAUKELIAI */
     .bm-page-wrapper .bm-kvadratai-control, 
     .bm-page-wrapper .bm-kvadratai-submit {
         box-sizing: border-box !important;
@@ -232,7 +235,7 @@
         color: #ffffff !important;
     }
 
-    /* KORTELIŲ DIZAINAS REZULTATUOSE */
+    /* REZULTATŲ KORTELĖS */
     .bm-page-wrapper .bm-output-card {
         border-bottom: 1px solid #f5f5f5 !important;
         padding-bottom: 12px !important;
@@ -284,21 +287,28 @@
         border-color: #a16207 !important;
     }
 
-    /* RESPONSIVE: MOBILIEJI ĮRENGINIAI */
+    /* ==========================================================================
+       MOBILIOJI VERSIJA - FIX: APSAUGA NUO REKOMENDACIJŲ NUKIRPIMO
+       ========================================================================== */
     @media (max-width: 768px) {
         .bm-page-wrapper .bm-squares-container {
             grid-template-columns: 1fr !important; 
-            grid-auto-rows: auto !important;
+            grid-auto-rows: auto !important; /* Panaikina fiksuotą 1fr eilučių aukštį mobiliajame */
         }
 
         .bm-page-wrapper .bm-square-box {
             min-height: auto !important;
+            height: auto !important; /* Leidžia blokui dinamiškai išsitempti pagal turinį */
             padding: 40px 30px !important;
         }
 
         .bm-page-wrapper .bm-left-square {
             border-bottom: none !important; 
             border-right: 1px solid #eaeaea !important;
+        }
+
+        .bm-page-wrapper .bm-right-square {
+            padding-bottom: 60px !important; /* Prideda papildomą saugos tarpą bloko apačioje mobiliame įrenginyje */
         }
     }
 </style>
