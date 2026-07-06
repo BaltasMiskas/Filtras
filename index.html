@@ -1,14 +1,11 @@
 <div class="bm-page-wrapper">
-    <!-- Akcentinė antraštė viršuje -->
     <div class="bm-main-headline-container">
         <h2 class="bm-main-headline">Pasirinkimų pagalbininkas</h2>
     </div>
 
-    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
     <div class="bm-grid-squares-section">
         <div class="bm-squares-container">
             
-            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai (1:1) -->
             <div class="bm-square-box bm-left-square">
                 <div class="bm-square-inner">
                     <p class="bm-categories-title">Atraskite autorinius gaminius, idealiai tinkančius jūsų dienai ir progai</p>
@@ -50,13 +47,12 @@
                 </div>
             </div>
 
-            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai (1:1) -->
             <div class="bm-square-box bm-right-square">
                 <div class="bm-square-inner">
                     <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
                     
                     <div id="bm-recommendations-wrapper">
-                        <p class="bm-description">Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte mūsų stilistų atrinktus deriniai.</p>
+                        <p class="bm-description">Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte mūsų stilistų atrinktus derinius.</p>
                     </div>
                 </div>
             </div>
@@ -67,7 +63,7 @@
 
 <style type="text/css">
 /* ==========================================================================
-       GRIEŽTAI IZOLIUOTI STILIAI - SU APSAUGA NUO APVADŲ NUKIRPIMO
+       GRIEŽTAI IZOLIUOTI STILIAI - SUTVARKYTAS KONTEINERIO ELGESYS
        ========================================================================== */
 
     .bm-page-wrapper {
@@ -77,7 +73,6 @@
         color: #1a1a1a !important;
         box-sizing: border-box !important;
         clear: both !important;
-        padding-bottom: 8px !important; /* APSAUGA: prideda laisvos vietos, kad PrestaShop nenukirptų rėmelio apačios */
     }
 
     .bm-page-wrapper * {
@@ -96,7 +91,7 @@
     .bm-page-wrapper .bm-main-headline {
         font-size: 20px !important;
         font-weight: 400 !important;
-        color: #a16207 !important; /* Baltas Miškas firminė ochra */
+        color: #a16207 !important;
         text-transform: uppercase !important;
         letter-spacing: 2px !important;
         margin: 0 !important;
@@ -106,12 +101,13 @@
     /* DVYNŲ KVADRATŲ TINKLELIS */
     .bm-page-wrapper .bm-grid-squares-section {
         width: 100% !important;
-        margin: 20px 0 25px 0 !important; /* Optimizuota: išvengiama milžiniško tuščio tarpo apačioje */
+        margin: 20px 0 30px 0 !important;
     }
 
     .bm-page-wrapper .bm-squares-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
+        grid-auto-rows: 1fr !important; /* Užtikrina, kad abu kvadratai VISADA būtų vienodo aukščio */
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -120,16 +116,15 @@
 
     .bm-page-wrapper .bm-square-box {
         width: 100% !important;
-        aspect-ratio: 1 / 1 !important; 
+        /* PAKEISTA: pašalintas aspect-ratio, kad naršyklė nenukirptų rėmelių */
+        min-height: 480px !important; /* Pradinis minimalus aukštis, palaikantis kvadrato proporciją dideliame ekrane */
         background: #ffffff !important;
         border: 1px solid #eaeaea !important; 
-        padding: 5% 8% !important; /* Optimizuoti vidiniai tarpai formos sutalpinimui */
+        padding: 40px 45px !important; /* Fiksuoti saugūs tarpai vietoje procentų */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         position: relative !important;
-        overflow: hidden !important; 
-        box-sizing: border-box !important;
     }
 
     .bm-page-wrapper .bm-left-square {
@@ -146,14 +141,14 @@
     .bm-page-wrapper .bm-filter-form {
         display: flex !important;
         flex-direction: column !important;
-        gap: 8px !important; /* Tarpai tarp laukelių */
+        gap: 12px !important;
         width: 100% !important;
     }
 
     .bm-page-wrapper .bm-form-group {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2px !important;
+        gap: 3px !important;
     }
 
     .bm-page-wrapper .bm-step-num {
@@ -165,10 +160,10 @@
     }
 
     .bm-page-wrapper .bm-categories-title {
-        font-size: 13px !important;
-        line-height: 1.4 !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
         color: #1a1a1a !important;
-        margin: 0 0 10px 0 !important;
+        margin: 0 0 15px 0 !important;
         text-align: left !important; 
         letter-spacing: 0.3px !important;
     }
@@ -196,7 +191,7 @@
     .bm-page-wrapper .bm-kvadratai-control, 
     .bm-page-wrapper .bm-kvadratai-submit {
         box-sizing: border-box !important;
-        height: 40px !important; /* Kompaktiškesnis aukštis formos sutraukimui */
+        height: 44px !important; 
         width: 100% !important;
         margin: 0 !important;
         outline: none !important;
@@ -222,13 +217,13 @@
         background: transparent !important;
         color: #a16207 !important;
         border: 1px solid #a16207 !important;
-        font-size: 11px !important;
+        font-size: 12px !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
         cursor: pointer !important;
         padding: 0 15px !important;
-        margin-top: 2px !important;
+        margin-top: 5px !important;
         transition: all 0.2s ease !important;
     }
 
@@ -289,28 +284,16 @@
         border-color: #a16207 !important;
     }
 
-    /* RESPONSIVE: PLANŠETĖS */
-    @media (max-width: 991px) {
-        .bm-page-wrapper .bm-square-box {
-            padding: 6% 8% !important;
-        }
-    }
-
     /* RESPONSIVE: MOBILIEJI ĮRENGINIAI */
     @media (max-width: 768px) {
-        .bm-page-wrapper .bm-main-headline {
-            font-size: 18px !important;
-        }
-
         .bm-page-wrapper .bm-squares-container {
             grid-template-columns: 1fr !important; 
+            grid-auto-rows: auto !important;
         }
 
         .bm-page-wrapper .bm-square-box {
-            aspect-ratio: 1 / 1 !important; 
-            border: 1px solid #eaeaea !important;
-            padding: 10% !important;
-            overflow: visible !important; 
+            min-height: auto !important;
+            padding: 40px 30px !important;
         }
 
         .bm-page-wrapper .bm-left-square {
