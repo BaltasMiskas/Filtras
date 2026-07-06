@@ -1,364 +1,406 @@
-<!DOCTYPE html>
-<html lang="lt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baltas Miškas | Stiliaus Rekomendacijos</title>
-    <style>
-        :root {
-            /* Firminė Baltas Miškas ochros/aukso akcentinė spalva */
-            --brand-color: #a16207; 
-            --bg-light: #ffffff;
-            --text-dark: #1c1c1c;
-            --text-muted: #666666;
-            --border-light: #eaeaea;
-            --bg-box: #fbfbfb;
-        }
+<div class="bm-page-wrapper">
+    <!-- Viršutinis mygtukas (Atitinka pavyzdžio struktūrą) -->
+    <div class="bm-btn-container">
+        <a class="bm-custom-btn" href="https://www.baltasmiskas.lt/pagrindinis-meniu/apie-mus/baltas-miskas-rekomendacijos-2">
+            <strong>VISOS REKOMENDACIJOS</strong>
+        </a>
+    </div>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 15px;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #ffffff;
-        }
-
-        h2 {
-            font-weight: 300;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        /* Pagrindinis 50/50 padalintas tinklelis (veikia visuose įrenginiuose) */
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: start;
-        }
-
-        /* --- KAIRYSIS KVADRATAS: FILTRAI --- */
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: var(--bg-box);
-            padding: 20px;
-            border: 1px solid var(--border-light);
-            border-radius: 2px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .step-number {
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: var(--brand-color);
-            text-transform: uppercase;
-            margin-bottom: 2px;
-            letter-spacing: 1px;
-        }
-
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        select {
-            padding: 10px 12px;
-            border: 1px solid var(--border-light);
-            border-radius: 2px;
-            font-size: 0.9rem;
-            background: #fff;
-            color: var(--text-dark);
-            outline: none;
-            transition: border-color 0.2s;
-            cursor: pointer;
-            width: 100%;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        select:focus {
-            border-color: var(--brand-color);
-        }
-
-        .submit-btn {
-            background: var(--brand-color);
-            color: #ffffff;
-            border: 1px solid var(--brand-color);
-            padding: 12px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 2px;
-            width: 100%;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
-        .submit-btn:hover {
-            background: transparent;
-            color: var(--brand-color);
-        }
-
-        /* --- DEŠINYSIS KVADRATAS: REKOMENDACIJOS --- */
-        .right-column {
-            border: 1px solid var(--border-light);
-            padding: 20px;
-            min-height: 380px;
-            background: #ffffff;
-            border-radius: 2px;
-        }
-
-        .results-headline {
-            font-weight: 400;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 10px;
-        }
-
-        .recommendations-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .rec-card {
-            border: 1px solid var(--border-light);
-            padding: 15px;
-            background: var(--bg-box);
-            border-radius: 2px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.2s ease;
-        }
-
-        .rec-card:hover {
-            border-color: var(--brand-color);
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(161, 98, 7, 0.05);
-        }
-
-        .rec-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--brand-color);
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .rec-title {
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 0 0 6px 0;
-            color: var(--text-dark);
-        }
-
-        .rec-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .shop-link {
-            align-self: flex-start;
-            text-align: center;
-            background: transparent;
-            color: var(--brand-color);
-            border: 1px solid var(--brand-color);
-            padding: 8px 14px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border-radius: 2px;
-            font-weight: 500;
-        }
-
-        .shop-link:hover {
-            background: var(--brand-color);
-            color: #ffffff;
-        }
-
-        /* Pradinė būsena ir tušti rezultatai */
-        .placeholder-text, .no-results {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding: 60px 20px;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Baltas Miškas lietuvių dizainerių drabužių rekomendacijos pagal orus</h2>
-    <div class="subtitle">Atraskite autorinius gaminius, idealiai tinkančius jūsų dienai ir progai</div>
-
-    <!-- 50/50 STRUKTŪRA -->
-    <div class="split-layout">
-        
-        <!-- KAIRĖ: TRIJŲ ŽINGSNIŲ PASIRINKIMAS -->
-        <div class="left-column">
+    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
+    <div class="bm-grid-squares-section">
+        <div class="bm-squares-container">
             
-            <div class="form-group">
-                <span class="step-number">Žingsnis 1</span>
-                <label for="weather-select">Kokie orai lauke?</label>
-                <select id="weather-select">
-                    <option value="karsta">Karšta vasara (>22°C)</option>
-                    <option value="silta" selected>Šilta / Vidutiniška (15°C - 22°C)</option>
-                    <option value="vejuota">Vėsu / Vėjuota / Lyja (<15°C)</option>
-                </select>
-            </div>
+            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai (1:1) -->
+            <div class="bm-square-box bm-left-square">
+                <div class="bm-square-inner">
+                    <p class="bm-categories-title">Atraskite autorinius gaminius, idealiai tinkančius jūsų dienai ir progai</p>
+                    
+                    <div class="bm-filter-form">
+                        <div class="bm-form-group">
+                            <span class="bm-step-num">Žingsnis 1</span>
+                            <select id="bm-weather-select" class="bm-kvadratai-control">
+                                <option value="karsta">Karšta vasara (&gt;22°C)</option>
+                                <option value="silta" selected>Šilta / Vidutiniška (15°C - 22°C)</option>
+                                <option value="vejuota">Vėsu / Vėjuota / Lyja (&lt;15°C)</option>
+                            </select>
+                        </div>
 
-            <div class="form-group">
-                <span class="step-number">Žingsnis 2</span>
-                <label for="occasion-select">Kokiai progai renkatės?</label>
-                <select id="occasion-select">
-                    <option value="kasdienai">Kasdienai / Mieste</option>
-                    <option value="sventei">Šventei / Vakarienei</option>
-                    <option value="darbui">Darbui / Ofisui</option>
-                    <option value="laisvalaikiui">Laisvalaikiui / Gamtai</option>
-                </select>
-            </div>
+                        <div class="bm-form-group">
+                            <span class="bm-step-num">Žingsnis 2</span>
+                            <select id="bm-occasion-select" class="bm-kvadratai-control">
+                                <option value="kasdienai">Kasdienai / Mieste</option>
+                                <option value="sventei">Šventei / Vakarienei</option>
+                                <option value="darbui">Darbui / Ofisui</option>
+                                <option value="laisvalaikiui">Laisvalaikiui / Gamtai</option>
+                            </select>
+                        </div>
 
-            <div class="form-group">
-                <span class="step-number">Žingsnis 3</span>
-                <label for="type-select">Ko ieškote labiausiai?</label>
-                <select id="type-select">
-                    <option value="visi">Rodyti viską</option>
-                    <option value="sukneles">Suknelės</option>
-                    <option value="audinys">Natūralūs audiniai (Linas/Kašmyras)</option>
-                    <option value="virsutiniai">Viršutiniai rūbai / Švarkai</option>
-                    <option value="kostiumai">Kostiumėliai</option>
-                    <option value="aksesuarai">Aksesuarai / Papuošalai</option>
-                </select>
-            </div>
+                        <div class="bm-form-group">
+                            <span class="bm-step-num">Žingsnis 3</span>
+                            <select id="bm-type-select" class="bm-kvadratai-control">
+                                <option value="visi">Rodyti visą asortimentą</option>
+                                <option value="sukneles">Suknelės</option>
+                                <option value="audinys">Natūralūs audiniai (Linas/Kašmyras)</option>
+                                <option value="virsutiniai">Viršutiniai rūbai / Švarkai</option>
+                                <option value="kostiumai">Kostiumėliai</option>
+                                <option value="aksesuarai">Aksesuarai / Papuošalai</option>
+                            </select>
+                        </div>
 
-            <button type="button" class="submit-btn" id="filter-btn">Ieškoti rekomendacijų</button>
-        </div>
-
-        <!-- DEŠINĖ: REKOMENDACIJOS -->
-        <div class="right-column" id="results-area">
-            <div class="results-headline">Rekomenduojami pasirinkimai:</div>
-            <div class="recommendations-list" id="recommendations-container">
-                <div class="placeholder-text">
-                    Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte autorinius derinius.
+                        <button id="bm-filter-submit" class="bm-kvadratai-submit" type="button">Ieškoti rekomendacijų</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai (1:1) -->
+            <div class="bm-square-box bm-right-square">
+                <div class="bm-square-inner">
+                    <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
+                    
+                    <div id="bm-recommendations-wrapper">
+                        <p class="bm-description">Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte mūsų stilistų atrinktus derinius.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
-<script>
-    const baseUrl = 'https://www.baltasmiskas.lt';
+<style type="text/css">
+/* ==========================================================================
+       GRIEŽTAI IZOLIUOTI STILIAI - PAREMTI JŪSŲ PAVYZDŽIU
+       ========================================================================== */
 
-    const dataset = [
-        // --- KARŠTA ORŲ GRUPĖ ---
-        { weather: "karsta", occasion: "kasdienai", type: "audinys", tag: "Linas", title: "Lininiai deriniai", desc: "Lengvas, kvėpuojantis lino audinys – pats komfortiškiausias pasirinkimas karštai vasaros dienai mieste.", url: "/pagrindinis-meniu/lininiai-deriniai" },
-        { weather: "karsta", occasion: "kasdienai", type: "virsutiniai", tag: "Vasara", title: "Stilingi šortai", desc: "Laisvo kirpimo lietuvių dizainerių šortai patogiam ir lengvam judėjimui mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/sortai" },
-        { weather: "karsta", occasion: "sventei", type: "sukneles", tag: "Elegancija", title: "Vasaros suknelės", desc: "Plazdančios, lengvos autorinio dizaino suknelės ypatingoms vasaros akimirkoms ir atviro oro šventėms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-        { weather: "karsta", occasion: "sventei", type: "aksesuarai", tag: "Akcentas", title: "Rankų darbo papuošalai", desc: "Užbaikite savo šventinį vasaros įvaizdį išskirtiniais lietuvių kūrėjų auskarais ar kaklo aksesuarais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/papuosalai-jai" },
-        { weather: "karsta", occasion: "darbui", type: "kostiumai", tag: "Stilius Ofise", title: "Lino laisvalaikio kostiumai", desc: "Struktūrizuoti, bet vėsūs lininiai kostiumėliai, užtikrinantys profesionalią išvaizdą net ir per didžiausius karščius.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/lininiai-laisvalaikio-kostiumai" },
-        { weather: "karsta", occasion: "darbui", type: "virsutiniai", tag: "Klasika", title: "Lengvos palaidinės", desc: "Elegantiškos ir plonos palaidinės trumpomis rankovėmis, lengvai priderinamos po vasariniu švarku.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/palaidines" },
-        { weather: "karsta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Komfortas", title: "Vasaros kombinezonai", desc: "Vieno drabužio magija judesio laisvei – lengvi kombinezonai nerūpestingam poilsiui pajūryje ar gamtoje.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kombinezonai" },
-        { weather: "karsta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Prie Jūros", title: "Maudymosi kostiumėliai", desc: "Aukštos kokybės, išskirtinio dizaino lietuvių kūrėjų maudymosi kostiumėliai jūsų atostogų akimirkoms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/laisvalaikio-ir-namu-drabuziai/maudymosi-kostiumeliai" },
+    .bm-page-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        color: #1a1a1a !important;
+        box-sizing: border-box !important;
+        clear: both !important;
+    }
 
-        // --- ŠILTA ORŲ GRUPĖ ---
-        { weather: "silta", occasion: "kasdienai", type: "audinys", tag: "Mezginiai", title: "Ploni megztiniai", desc: "Idealus pasirinkimas giedrai, bet permainingai dienai, kai norisi švelnaus jaukumo sluoksniuojant įvaizdį.", url: "/pagrindinis-meniu/ploni-megztiniai" },
-        { weather: "silta", occasion: "kasdienai", type: "sukneles", tag: "Klasika", title: "Stilingi sijonai", desc: "Midi ar maxi autorinio dizaino sijonai, puikiai derantys su baziniais marškinėliais arba lengvu megztuku.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/sijonai" },
-        { weather: "silta", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros dizainerių suknelės su elegantišku kritimu, idealiai tinkančios jaukiam vakarui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-        { weather: "silta", occasion: "sventei", type: "aksesuarai", tag: "Aksesuarai", title: "Šilko skarelės", desc: "Subtilus autorinės skarelės akcentas jūsų elegantiškam įvaizdžiui papildyti.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles/skareles" },
-        { weather: "silta", occasion: "darbui", type: "kostiumai", tag: "Profesionalu", title: "Klasikiniai kostiumėliai", desc: "Nepriekaištingo kirpimo švarko ir kelnių/sijono dizainerių deriniai jūsų kasdieniam darbui biure.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/klasikiniai-kostiumeliai" },
-        { weather: "silta", occasion: "darbui", type: "virsutiniai", tag: "Struktūra", title: "Kokybiški švarkai", desc: "Lietuvos kūrėjų švarkai, suteikiantys charakterio ir formalumo bet kokiam baziniam deriniui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/svarkai" },
-        { weather: "silta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Laisvė", title: "Patogios kelnės", desc: "Laisvalaikio kelnės kartu su autorinio dizaino marškinėliais – neįpareigojančiam patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kelnes-2" },
-        { weather: "silta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Dizainerių kuprinės", desc: "Talpios ir stilingos odinės bei tekstilinės lietuvių kūrėjų kuprinės visiems jūsų kasdieniams daiktams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/lietuviu-dizaineriu-kuprines" },
+    .bm-page-wrapper * {
+        box-sizing: border-box !important;
+        font-weight: 300 !important;
+    }
 
-        // --- VĖSU / VĖJUOTA ORŲ GRUPĖ ---
-        { weather: "vejuota", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Vėsiai dienai – jaukūs, minkšti ir šilti ilgieji mezginiai bei kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
-        { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo rudeninį ar pavasarinį įvaizdį išraiškinga natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
-        { weather: "vejuota", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Ypatingai švelnus ir aukštos kokybės kašmyras, kuris sušildo ir atrodo nepriekaištingai vakarienės metu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
-        { weather: "vejuota", occasion: "sventei", type: "aksesuarai", tag: "Nuotaika", title: "Nišiniai kvepalai", desc: "Sukurkite nematomą, bet itin gilų šventinį įspūdį su nišinės parfumerijos kūriniais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/nisiniai-kvepalai" },
-        { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, saugantys nuo vėjo bei lietaus ir išlaikantys miesto eleganciją.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
-        { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Elegancija", title: "Kūrėjų marškiniai", desc: "Klasikiniai ir modernizuoti marškiniai, idealiai tinkantys po megztiniu ar švarku.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/palaidines/marskiniai" },
-        { weather: "vejuota", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Šiluma", title: "Paltai ir striukės", desc: "Kokybiški ir šilti viršutiniai drabužiai žvarbesniems pasivaikščiojimams gamtoje ar mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/paltaistriukes" },
-        { weather: "vejuota", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti džemperiai", desc: "Minkšti, stori medvilnės džemperiai su pūkeliu – visiškam patogumui vėsiomis dienomis.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" }
-    ];
+    /* REKOMENDACIJŲ MYGTUKAS */
+    .bm-page-wrapper .bm-btn-container {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 20px 0 40px 0 !important;
+        clear: both !important;
+    }
 
-    function filterProducts() {
-        const selectedWeather = document.getElementById('weather-select').value;
-        const selectedOccasion = document.getElementById('occasion-select').value;
-        const selectedType = document.getElementById('type-select').value;
+    .bm-page-wrapper .bm-custom-btn {
+        display: inline-block !important;
+        width: 90% !important;
+        max-width: 400px !important;
+        padding: 16px 20px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        font-size: 12px !important;
+        text-decoration: none !important;
+        letter-spacing: 2px !important;
+        border: 1px solid #1a1a1a !important;
+        color: #1a1a1a !important;
+        background-color: transparent !important;
+        transition: background-color 0.2s ease !important;
+    }
 
-        const container = document.getElementById('recommendations-container');
-        container.innerHTML = ''; 
+    .bm-page-wrapper .bm-custom-btn strong {
+        font-weight: 600 !important;
+    }
 
-        const filteredItems = dataset.filter(item => {
-            const matchesWeather = item.weather === selectedWeather;
-            const matchesOccasion = item.occasion === selectedOccasion;
-            const matchesType = selectedType === 'visi' || item.type === selectedType;
-            return matchesWeather && matchesOccasion && matchesType;
-        });
+    .bm-page-wrapper .bm-custom-btn:hover {
+        background-color: #f9f9f9 !important;
+    }
 
-        if (filteredItems.length === 0) {
-            container.innerHTML = `
-                <div class="no-results">
-                    Šiuo metu pagal pasirinktus kriterijus konkrečių rekomendacijų neturime. <br><br>
-                    Pabandykite pakeisti 3 žingsnio pasirinkimą į <strong>„Rodyti viską“</strong>.
-                </div>
-            `;
-        } else {
-            filteredItems.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'rec-card';
-                card.innerHTML = `
-                    <div class="rec-tag">${item.tag}</div>
-                    <h3 class="rec-title">${item.title}</h3>
-                    <p class="rec-desc">${item.desc}</p>
-                    <a href="${baseUrl}${item.url}" target="_blank" class="shop-link">Atrasti asortimentą</a>
-                `;
-                container.appendChild(card);
-            });
+    /* DVYNŲ KVADRATŲ TINKLELIS */
+    .bm-page-wrapper .bm-grid-squares-section {
+        width: 100% !important;
+        margin: 40px 0 5rem 0 !important;
+    }
+
+    .bm-page-wrapper .bm-squares-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    .bm-page-wrapper .bm-square-box {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important; 
+        background: #ffffff !important;
+        border: 1px solid #eaeaea !important; 
+        padding: 8% 10% !important; 
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important; /* Užtikrina, kad niekas neišlystų ir nedeformuotų dėžutės */
+    }
+
+    .bm-page-wrapper .bm-left-square {
+        border-right: none !important; 
+    }
+
+    .bm-page-wrapper .bm-square-inner {
+        width: 100% !important;
+        max-width: 320px !important; 
+        margin: 0 auto !important;
+    }
+
+    /* FILTRO FORMA IR ŽINGSNIAI */
+    .bm-page-wrapper .bm-filter-form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .bm-page-wrapper .bm-form-group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+
+    .bm-page-wrapper .bm-step-num {
+        font-size: 10px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        color: #a16207 !important;
+        font-weight: 600 !important;
+    }
+
+    .bm-page-wrapper .bm-categories-title {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        color: #1a1a1a !important;
+        margin: 0 0 15px 0 !important;
+        text-align: left !important; 
+        letter-spacing: 0.3px !important;
+    }
+
+    .bm-page-wrapper .bm-description-headline {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        color: #1a1a1a !important;
+        margin: 0 0 15px 0 !important;
+        border-bottom: 1px solid #eaeaea !important;
+        padding-bottom: 5px !important;
+    }
+
+    .bm-page-wrapper .bm-description {
+        font-size: 13px !important;
+        color: #555 !important;
+        margin: 0 0 15px 0 !important;
+        line-height: 1.6 !important;
+        text-align: left !important; 
+    }
+
+    /* ĮVESTIES LAUKELIAI IR MYGTUKAS */
+    .bm-page-wrapper .bm-kvadratai-control, 
+    .bm-page-wrapper .bm-kvadratai-submit {
+        box-sizing: border-box !important;
+        height: 44px !important; 
+        width: 100% !important;
+        margin: 0 !important;
+        outline: none !important;
+        border-radius: 4px !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .bm-page-wrapper .bm-kvadratai-control {
+        padding: 0 12px !important;
+        background: #ffffff !important;
+        border: 1px solid #dcdcdc !important;
+        font-size: 13px !important;
+        color: #333 !important;
+        text-align: left !important; 
+        cursor: pointer !important;
+    }
+
+    .bm-page-wrapper .bm-kvadratai-submit {
+        justify-content: flex-start !important; 
+        background: transparent !important;
+        color: #a16207 !important;
+        border: 1px solid #a16207 !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        cursor: pointer !important;
+        padding: 0 15px !important;
+        margin-top: 5px !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .bm-page-wrapper .bm-kvadratai-submit:hover {
+        background: #a16207 !important;
+        color: #ffffff !important;
+    }
+
+    /* KORTELIŲ DIZAINAS */
+    .bm-page-wrapper .bm-output-card {
+        border-bottom: 1px solid #f5f5f5 !important;
+        padding-bottom: 12px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .bm-page-wrapper .bm-output-card:last-child {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .bm-page-wrapper .bm-card-tag {
+        font-size: 10px !important;
+        color: #a16207 !important;
+        text-transform: uppercase !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .bm-page-wrapper .bm-card-title {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        margin: 0 0 4px 0 !important;
+        color: #1a1a1a !important;
+    }
+
+    .bm-page-wrapper .bm-card-desc {
+        font-size: 12px !important;
+        color: #666 !important;
+        line-height: 1.4 !important;
+        margin: 0 0 8px 0 !important;
+    }
+
+    .bm-page-wrapper .bm-card-link {
+        display: inline-block !important;
+        font-size: 11px !important;
+        color: #a16207 !important;
+        text-transform: uppercase !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.5px !important;
+        border-bottom: 1px solid transparent !important;
+        transition: border-color 0.2s !important;
+    }
+
+    .bm-page-wrapper .bm-card-link:hover {
+        border-color: #a16207 !important;
+    }
+
+    /* RESPONSIVE: PLANŠETĖS */
+    @media (max-width: 991px) {
+        .bm-page-wrapper .bm-square-box {
+            padding: 6% 8% !important;
         }
     }
 
-    document.getElementById('filter-btn').addEventListener('click', filterProducts);
-</script>
+    /* RESPONSIVE: MOBILIEJI ĮRENGINIAI */
+    @media (max-width: 768px) {
+        .bm-page-wrapper .bm-squares-container {
+            grid-template-columns: 1fr !important; 
+        }
 
-</body>
-</html>
+        .bm-page-wrapper .bm-square-box {
+            aspect-ratio: 1 / 1 !important; 
+            border: 1px solid #eaeaea !important;
+            padding: 10% !important;
+            overflow: visible !important; /* Mobiliam leidžiame natūraliai judėti žemyn */
+        }
+
+        .bm-page-wrapper .bm-left-square {
+            border-bottom: none !important; 
+            border-right: 1px solid #eaeaea !important;
+        }
+    }
+</style>
+
+<script>
+    (function() {
+        const baseUrl = 'https://www.baltasmiskas.lt';
+
+        const dataset = [
+            // --- KARŠTA ORŲ GRUPĖ ---
+            { weather: "karsta", occasion: "kasdienai", type: "audinys", tag: "Linas", title: "Lininiai deriniai", desc: "Lengvas, kvėpuojantis lino audinys – pats komfortiškiausias pasirinkimas karštai vasaros dienai.", url: "/pagrindinis-meniu/lininiai-deriniai" },
+            { weather: "karsta", occasion: "kasdienai", type: "virsutiniai", tag: "Vasara", title: "Stilingi šortai", desc: "Laisvo kirpimo lietuvių dizainerių šortai patogiam ir lengvam judėjimui mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/sortai" },
+            { weather: "karsta", occasion: "sventei", type: "sukneles", tag: "Elegancija", title: "Vasaros suknelės", desc: "Plazdančios, lengvos autorinio dizaino suknelės ypatingoms vasaros akimirkoms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
+            { weather: "karsta", occasion: "sventei", type: "aksesuarai", tag: "Akcentas", title: "Rankų darbo papuošalai", desc: "Užbaikite savo įvaizdį išskirtiniais lietuvių kūrėjų auskarais ar kaklo aksesuarais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/papuosalai-jai" },
+            { weather: "karsta", occasion: "darbui", type: "kostiumai", tag: "Stilius Ofise", title: "Lino laisvalaikio kostiumai", desc: "Struktūrizuoti, bet vėsūs lininiai kostiumėliai, užtikrinantys profesionalią išvaizdą.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/lininiai-laisvalaikio-kostiumai" },
+            { weather: "karsta", occasion: "darbui", type: "virsutiniai", tag: "Klasika", title: "Lengvos palaidinės", desc: "Elegantiškos ir plonos palaidinės trumpomis rankovėmis po švarku.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/palaidines" },
+            { weather: "karsta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Komfortas", title: "Vasaros kombinezonai", desc: "Vieno drabužio magija judesio laisvei – lengvi kombinezonai nerūpestingam poilsiui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kombinezonai" },
+            { weather: "karsta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Prie Jūros", title: "Maudymosi kostiumėliai", desc: "Aukštos kokybės, išskirtinio dizaino lietuvių kūrėjų maudymosi kostiumėliai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/laisvalaikio-ir-namu-drabuziai/maudymosi-kostiumeliai" },
+
+            // --- ŠILTA ORŲ GRUPĖ ---
+            { weather: "silta", occasion: "kasdienai", type: "audinys", tag: "Mezginiai", title: "Ploni megztiniai", desc: "Idealus pasirinkimas permainingai dienai, kai norisi švelnaus jaukumo sluoksniuojant.", url: "/pagrindinis-meniu/ploni-megztiniai" },
+            { weather: "silta", occasion: "kasdienai", type: "sukneles", tag: "Klasika", title: "Stilingi sijonai", desc: "Midi ar maxi autorinio dizaino sijonai, puikiai derantys su baziniais marškinėliais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/sijonai" },
+            { weather: "silta", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros dizainerių suknelės su elegantišku kritimu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
+            { weather: "silta", occasion: "sventei", type: "aksesuarai", tag: "Aksesuarai", title: "Šilko skarelės", desc: "Subtilus autorinės skarelės akcentas jūsų elegantiškam įvaizdžiui papildyti.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles/skareles" },
+            { weather: "silta", occasion: "darbui", type: "kostiumai", tag: "Profesionalu", title: "Klasikiniai kostiumėliai", desc: "Nepriekaištingo kirpimo švarko ir kelnių/sijono dizainerių deriniai biure.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/klasikiniai-kostiumeliai" },
+            { weather: "silta", occasion: "darbui", type: "virsutiniai", tag: "Struktūra", title: "Kokybiški švarkai", desc: "Lietuvos kūrėjų švarkai, suteikiantys charakterio ir formalumo bet kokiam deriniui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/svarkai" },
+            { weather: "silta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Laisvė", title: "Patogios kelnės", desc: "Laisvalaikio kelnės kartu su autorinio dizaino marškinėliais – patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kelnes-2" },
+            { weather: "silta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Dizainerių kuprinės", desc: "Talpios ir stilingos odinės bei tekstilinės lietuvių kūrėjų kuprinės jūsų daiktams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/lietuviu-dizaineriu-kuprines" },
+
+            // --- VĖSU / VĖJUOTA ORŲ GRUPĖ ---
+            { weather: "vejuota", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Vėsiai dienai – jaukūs, minkšti ir šilti ilgieji mezginiai bei kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
+            { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išraiškinga natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
+            { weather: "vejuota", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Ypatingai švelnus kašmyras, kuris sušildo ir atrodo nepriekaištingai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
+            { weather: "vejuota", occasion: "sventei", type: "aksesuarai", tag: "Nuotaika", title: "Nišiniai kvepalai", desc: "Sukurkite nematomą, bet itin gilų šventinį įspūdį su nišine parfumerija.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/nisiniai-kvepalai" },
+            { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, saugantys nuo vėjo bei lietaus.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
+            { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Elegancija", title: "Kūrėjų marškiniai", desc: "Klasikiniai ir modernizuoti marškiniai, idealiai tinkantys po megztiniu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/palaidines/marskiniai" },
+            { weather: "vejuota", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Šiluma", title: "Paltai ir striukės", desc: "Kokybiški ir šilti viršutiniai drabužiai žvarbesniems pasivaikščiojimams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/paltaistriukes" },
+            { weather: "vejuota", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti džemperiai", desc: "Minkšti, stori medvilnės džemperiai su pūkeliu – visiškam patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" }
+        ];
+
+        document.getElementById('bm-filter-submit').addEventListener('click', function() {
+            const weather = document.getElementById('bm-weather-select').value;
+            const occasion = document.getElementById('bm-occasion-select').value;
+            const type = document.getElementById('bm-type-select').value;
+
+            const wrapper = document.getElementById('bm-recommendations-wrapper');
+            const headline = document.getElementById('bm-res-headline');
+            wrapper.innerHTML = ''; 
+
+            let filtered = dataset.filter(item => {
+                return item.weather === weather && item.occasion === occasion && (type === 'visi' || item.type === type);
+            });
+
+            if (filtered.length === 0) {
+                headline.innerText = "Rezultatai";
+                wrapper.innerHTML = '<p class="bm-description">Šiuo metu pagal pasirinktus kriterijus konkrečių rekomendacijų neturime. Pabandykite pakeisti 3 žingsnio pasirinkimą į „Rodyti visą asortimentą“.</p>';
+            } else {
+                headline.innerText = "Rekomenduojami pasirinkimai";
+                
+                // Ribojame iki 2 elementų tik staliniams kompiuteriams (ekranas > 768px)
+                const isDesktop = window.innerWidth > 768;
+                const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered;
+
+                itemsToShow.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'bm-output-card';
+                    card.innerHTML = `
+                        <div class="bm-card-tag">${item.tag}</div>
+                        <h4 class="bm-card-title">${item.title}</h4>
+                        <p class="bm-card-desc">${item.desc}</p>
+                        <a href="${baseUrl}${item.url}" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>
+                    `;
+                    wrapper.appendChild(card);
+                });
+            }
+        });
+    })();
+</script>
