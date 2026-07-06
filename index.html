@@ -1,11 +1,14 @@
 <div class="bm-page-wrapper">
+    <!-- Akcentinė antraštė viršuje -->
     <div class="bm-main-headline-container">
         <h2 class="bm-main-headline">Pasirinkimų pagalbininkas</h2>
     </div>
 
+    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
     <div class="bm-grid-squares-section">
         <div class="bm-squares-container">
             
+            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai (1:1) -->
             <div class="bm-square-box bm-left-square">
                 <div class="bm-square-inner">
                     <p class="bm-categories-title">Atraskite autorinius gaminius, idealiai tinkančius jūsų dienai ir progai</p>
@@ -47,12 +50,13 @@
                 </div>
             </div>
 
+            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai (1:1) -->
             <div class="bm-square-box bm-right-square">
                 <div class="bm-square-inner">
                     <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
                     
                     <div id="bm-recommendations-wrapper">
-                        <p class="bm-description">Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte mūsų stilistų atrinktus derinius.</p>
+                        <p class="bm-description">Pasirinkite kriterijus kairėje ir spauskite „Ieškoti rekomendacijų“, kad pamatytumėte mūsų stilistų atrinktus deriniai.</p>
                     </div>
                 </div>
             </div>
@@ -63,7 +67,7 @@
 
 <style type="text/css">
 /* ==========================================================================
-       GRIEŽTAI IZOLIUOTI STILIAI - SU SUMAŽINTAIS TARPAIS SUTAMPYMUI
+       GRIEŽTAI IZOLIUOTI STILIAI - SU APSAUGA NUO APVADŲ NUKIRPIMO
        ========================================================================== */
 
     .bm-page-wrapper {
@@ -73,6 +77,7 @@
         color: #1a1a1a !important;
         box-sizing: border-box !important;
         clear: both !important;
+        padding-bottom: 8px !important; /* APSAUGA: prideda laisvos vietos, kad PrestaShop nenukirptų rėmelio apačios */
     }
 
     .bm-page-wrapper * {
@@ -91,7 +96,7 @@
     .bm-page-wrapper .bm-main-headline {
         font-size: 20px !important;
         font-weight: 400 !important;
-        color: #a16207 !important;
+        color: #a16207 !important; /* Baltas Miškas firminė ochra */
         text-transform: uppercase !important;
         letter-spacing: 2px !important;
         margin: 0 !important;
@@ -101,7 +106,7 @@
     /* DVYNŲ KVADRATŲ TINKLELIS */
     .bm-page-wrapper .bm-grid-squares-section {
         width: 100% !important;
-        margin: 20px 0 5rem 0 !important;
+        margin: 20px 0 25px 0 !important; /* Optimizuota: išvengiama milžiniško tuščio tarpo apačioje */
     }
 
     .bm-page-wrapper .bm-squares-container {
@@ -118,7 +123,7 @@
         aspect-ratio: 1 / 1 !important; 
         background: #ffffff !important;
         border: 1px solid #eaeaea !important; 
-        padding: 5% 8% !important; /* Optimizuota (buvo 8% 10%): turinys nespaudžia apatinio rėmelio */
+        padding: 5% 8% !important; /* Optimizuoti vidiniai tarpai formos sutalpinimui */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -141,7 +146,7 @@
     .bm-page-wrapper .bm-filter-form {
         display: flex !important;
         flex-direction: column !important;
-        gap: 8px !important; /* Optimizuota (buvo 10px): geresnis vertikalus telpantis tinklelis */
+        gap: 8px !important; /* Tarpai tarp laukelių */
         width: 100% !important;
     }
 
@@ -160,10 +165,10 @@
     }
 
     .bm-page-wrapper .bm-categories-title {
-        font-size: 13px !important; /* Optimizuota (buvo 14px) */
+        font-size: 13px !important;
         line-height: 1.4 !important;
         color: #1a1a1a !important;
-        margin: 0 0 10px 0 !important; /* Optimizuota (buvo 15px) */
+        margin: 0 0 10px 0 !important;
         text-align: left !important; 
         letter-spacing: 0.3px !important;
     }
@@ -191,7 +196,7 @@
     .bm-page-wrapper .bm-kvadratai-control, 
     .bm-page-wrapper .bm-kvadratai-submit {
         box-sizing: border-box !important;
-        height: 40px !important; /* Optimizuota (buvo 44px): sutaupo vertikalios vietos rėmeliui */
+        height: 40px !important; /* Kompaktiškesnis aukštis formos sutraukimui */
         width: 100% !important;
         margin: 0 !important;
         outline: none !important;
@@ -370,7 +375,6 @@
             } else {
                 headline.innerText = "Rekomenduojami pasirinkimai";
                 
-                // Ribojame iki 2 elementų tik staliniams kompiuteriams (ekranas > 768px)
                 const isDesktop = window.innerWidth > 768;
                 const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered;
 
