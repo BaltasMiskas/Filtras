@@ -55,7 +55,7 @@
                         <p class="bm-description">Pasirinkite kriterijus ir spauskite „Ieškoti rekomendacijų“.</p>
                     </div>
                     
-                    <button id="bm-back-to-filters" class="bm-kvadratai-back-btn" type="button">&#8592; Keisti kriterijus</button>
+                    <button id="bm-back-to-filters" class="bm-kvadratai-back-btn" type="button">← Keisti kriterijus</button>
                 </div>
             </div>
 
@@ -331,14 +331,11 @@
 </style>
 
 <script>
-    // Saugumo kabliataškis pradžioje, kad apsisaugotume nuo kitų skriptų klaidų svetainėje
-    ;HTMLAnchorElement.prototype.customMarker = true; 
-
     (function() {
-        // Naudojame lokalią nuorodą, kad tiktų tiek GitHub aplinkai, tiek realiai svetainei
-        const baseUrl = window.location.hostname.indexOf('github.io') > -1 ? '' : 'https://www.baltasmiskas.lt';
+        const baseUrl = 'https://www.baltasmiskas.lt';
 
         const dataset = [
+            // --- KARŠTA ORŲ GRUPĖ ---
             { weather: "karsta", occasion: "kasdienai", type: "audinys", tag: "Linas", title: "Lininiai deriniai", desc: "Lengvas, kvėpuojantis lino audinys – pats komfortiškiausias pasirinkimas karštai vasaros dienai.", url: "/pagrindinis-meniu/lininiai-deriniai" },
             { weather: "karsta", occasion: "kasdienai", type: "virsutiniai", tag: "Vasara", title: "Stilingi šortai", desc: "Laisvo kirpimo lietuvių dizainerių šortai patogiam ir lengvam judėjimui mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/sortai" },
             { weather: "karsta", occasion: "sventei", type: "sukneles", tag: "Elegancija", title: "Vasaros suknelės", desc: "Plazdančios, lengvos autorinio dizaino suknelės ypatingoms vasaros akimirkoms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
@@ -348,6 +345,7 @@
             { weather: "karsta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Komfortas", title: "Vasaros kombinezonai", desc: "Vieno drabužio magija judesio laisvei – lengvi kombinezonai nerūpestingam poilsiui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kombinezonai" },
             { weather: "karsta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Prie Jūros", title: "Maudymosi kostiumėliai", desc: "Aukštos kokybės, išskirtinio dizaino lietuvių kūrėjų maudymosi kostiumėliai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/laisvalaikio-ir-namu-drabuziai/maudymosi-kostiumeliai" },
 
+            // --- ŠILTA ORŲ GRUPĖ ---
             { weather: "silta", occasion: "kasdienai", type: "audinys", tag: "Mezginiai", title: "Ploni megztiniai", desc: "Idealus pasirinkimas permainingai dienai, kai norisi švelnaus jaukumo sluoksniuojant.", url: "/pagrindinis-meniu/ploni-megztiniai" },
             { weather: "silta", occasion: "kasdienai", type: "sukneles", tag: "Klasika", title: "Stilingi sijonai", desc: "Midi ar maxi autorinio dizaino sijonai, puikiai derantys su baziniais marškinėliais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/sijonai" },
             { weather: "silta", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros natūralių pluoštų dizainerių suknelės su elegantišku kritimu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
@@ -359,6 +357,7 @@
             { weather: "silta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Laisvė", title: "Patogios kelnės", desc: "Laisvalaikio kelnės kartu su autorinio dizaino marškinėliais – patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kelnes-2" },
             { weather: "silta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Dizainerių kuprinės", desc: "Talpios ir stilingos odinės bei tekstilinės lietuvių kūrėjų kuprinės jūsų daiktams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/lietuviu-dizaineriu-kuprines" },
 
+            // --- VĖSU / VĖJUOTA ORŲ GRUPĖ ---
             { weather: "vejuota", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Vėsiai dienai – jaukūs, minkšti ir šilti ilgieji natūralios vilnos mezginiai bei kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
             { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išraiškinga natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
             { weather: "vejuota", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Ypatingai švelnus kašmyras, kuris sušildo ir atrodo nepriekaištingai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
@@ -370,7 +369,6 @@
         ];
 
         const container = document.getElementById('bm-squares-main-container');
-        if (!container) return;
 
         document.getElementById('bm-filter-submit').addEventListener('click', function() {
             const weather = document.getElementById('bm-weather-select').value;
@@ -379,11 +377,9 @@
 
             const wrapper = document.getElementById('bm-recommendations-wrapper');
             const headline = document.getElementById('bm-res-headline');
-            if (!wrapper || !headline) return;
-
             wrapper.innerHTML = ''; 
 
-            let filtered = dataset.filter(function(item) {
+            let filtered = dataset.filter(item => {
                 return item.weather === weather && item.occasion === occasion && (type === 'visi' || item.type === type);
             });
 
@@ -396,15 +392,15 @@
                 const isDesktop = window.innerWidth > 768;
                 const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
 
-                itemsToShow.forEach(function(item) {
+                itemsToShow.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'bm-output-card';
-                    card.innerHTML = '\
-                        <div class="bm-card-tag">' + item.tag + '</div>\
-                        <h4 class="bm-card-title">' + item.title + '</h4>\
-                        <p class="bm-card-desc">' + item.desc + '</p>\
-                        <a href="' + baseUrl + item.url + '" target="_blank" class="bm-card-link">Atrasti asortimentą &rarr;</a>\
-                    ';
+                    card.innerHTML = `
+                        <div class="bm-card-tag">${item.tag}</div>
+                        <h4 class="bm-card-title">${item.title}</h4>
+                        <p class="bm-card-desc">${item.desc}</p>
+                        <a href="${baseUrl}${item.url}" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>
+                    `;
                     wrapper.appendChild(card);
                 });
             }
