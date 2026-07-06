@@ -103,7 +103,7 @@
     .bm-squares-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        grid-auto-rows: 1fr !important; 
+        align-items: stretch !important; /* Užtikrina, kad abu stulpeliai (kvadratai) būtų vienodo aukščio */
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -118,7 +118,7 @@
         border: 1px solid #eaeaea !important; 
         padding: 40px 45px !important;
         display: flex !important;
-        align-items: stretch !important; 
+        align-items: center !important; /* Centruoja turinį vertikaliai kvadrato viduje */
         justify-content: center !important;
         position: relative !important;
     }
@@ -130,7 +130,6 @@
     .bm-square-inner {
         width: 100% !important;
         max-width: 320px !important; 
-        margin: auto 0 !important; 
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -296,7 +295,6 @@
     @media (max-width: 768px) {
         .bm-squares-container {
             grid-template-columns: 1fr !important; 
-            grid-auto-rows: auto !important;
         }
 
         .bm-square-box {
@@ -305,11 +303,6 @@
             padding: 40px 35px !important;
             overflow: hidden !important;
             border: 1px solid #eaeaea !important;
-            align-items: center !important;
-        }
-
-        .bm-square-inner {
-            margin: 0 auto !important;
         }
 
         #bm-results-block {
@@ -359,7 +352,7 @@
 
             // --- VĖSU / VĖJUOTA ORŲ GRUPĖ ---
             { weather: "vejuota", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Vėsiai dienai – jaukūs, minkšti ir šilti ilgieji natūralios vilnos mezginiai bei kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
-            { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išraiškinga natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
+            { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išskirtine natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
             { weather: "vejuota", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Ypatingai švelnus kašmyras, kuris sušildo ir atrodo nepriekaištingai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
             { weather: "vejuota", occasion: "sventei", type: "aksesuarai", tag: "Nuotaika", title: "Nišiniai kvepalai", desc: "Sukurkite nematomą, bet itin gilų šventinį įspūdį su nišine parfumerija.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/nisiniai-kvepalai" },
             { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, saugantys nuo vėjo bei lietaus.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
