@@ -8,7 +8,7 @@
             
             <div class="bm-square-box bm-left-square" id="bm-filter-block">
                 <div class="bm-square-inner">
-                    <p class="bm-categories-title">Atraskite Lietuvių dizainerių gaminius, tinkančius skirtingiems orams ir progoms</p>
+                    <p class="bm-categories-title">Atraskite Lietuvių dizainerių gaminius, tinkančius orams ir progai</p>
                     
                     <div class="bm-filter-form">
                         <div class="bm-form-group">
@@ -103,7 +103,7 @@
     .bm-squares-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        align-items: stretch !important; 
+        grid-auto-rows: 1fr !important; 
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -118,7 +118,7 @@
         border: 1px solid #eaeaea !important; 
         padding: 40px 45px !important;
         display: flex !important;
-        align-items: center !important; 
+        align-items: stretch !important; 
         justify-content: center !important;
         position: relative !important;
     }
@@ -130,6 +130,7 @@
     .bm-square-inner {
         width: 100% !important;
         max-width: 320px !important; 
+        margin: auto 0 !important; 
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -295,6 +296,7 @@
     @media (max-width: 768px) {
         .bm-squares-container {
             grid-template-columns: 1fr !important; 
+            grid-auto-rows: auto !important;
         }
 
         .bm-square-box {
@@ -303,6 +305,11 @@
             padding: 40px 35px !important;
             overflow: hidden !important;
             border: 1px solid #eaeaea !important;
+            align-items: center !important;
+        }
+
+        .bm-square-inner {
+            margin: 0 auto !important;
         }
 
         #bm-results-block {
@@ -325,9 +332,9 @@
 
 <script>
     (function() {
-        var baseUrl = 'https://www.baltasmiskas.lt';
+        const baseUrl = 'https://www.baltasmiskas.lt';
 
-        var dataset = [
+        const dataset = [
             // --- KARŠTA ORŲ GRUPĖ ---
             { weather: "karsta", occasion: "kasdienai", type: "audinys", tag: "Linas", title: "Lininiai deriniai", desc: "Lengvas, kvėpuojantis lino audinys – pats komfortiškiausias pasirinkimas karštai vasaros dienai.", url: "/pagrindinis-meniu/lininiai-deriniai" },
             { weather: "karsta", occasion: "kasdienai", type: "virsutiniai", tag: "Vasara", title: "Stilingi šortai", desc: "Laisvo kirpimo lietuvių dizainerių šortai patogiam ir lengvam judėjimui mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/sortai" },
@@ -352,7 +359,7 @@
 
             // --- VĖSU / VĖJUOTA ORŲ GRUPĖ ---
             { weather: "vejuota", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Vėsiai dienai – jaukūs, minkšti ir šilti ilgieji natūralios vilnos mezginiai bei kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
-            { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išskirtine natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
+            { weather: "vejuota", occasion: "kasdienai", type: "aksesuarai", tag: "Būtina", title: "Autorinio dizaino rankinės", desc: "Papildykite savo įvaizdį išraiškinga natūralios odos rankine.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/rankines" },
             { weather: "vejuota", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Ypatingai švelnus kašmyras, kuris sušildo ir atrodo nepriekaištingai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
             { weather: "vejuota", occasion: "sventei", type: "aksesuarai", tag: "Nuotaika", title: "Nišiniai kvepalai", desc: "Sukurkite nematomą, bet itin gilų šventinį įspūdį su nišine parfumerija.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/nisiniai-kvepalai" },
             { weather: "vejuota", occasion: "darbui", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, saugantys nuo vėjo bei lietaus.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
@@ -361,21 +368,18 @@
             { weather: "vejuota", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti džemperiai", desc: "Minkšti, stori kokybiškos medvilnės džemperiai su pūkeliu – visiškam patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" }
         ];
 
-        var container = document.getElementById('bm-squares-main-container');
-        if (!container) return;
+        const container = document.getElementById('bm-squares-main-container');
 
         document.getElementById('bm-filter-submit').addEventListener('click', function() {
-            var weather = document.getElementById('bm-weather-select').value;
-            var occasion = document.getElementById('bm-occasion-select').value;
-            var type = document.getElementById('bm-type-select').value;
+            const weather = document.getElementById('bm-weather-select').value;
+            const occasion = document.getElementById('bm-occasion-select').value;
+            const type = document.getElementById('bm-type-select').value;
 
-            var wrapper = document.getElementById('bm-recommendations-wrapper');
-            var headline = document.getElementById('bm-res-headline');
-            if (!wrapper || !headline) return;
-            
+            const wrapper = document.getElementById('bm-recommendations-wrapper');
+            const headline = document.getElementById('bm-res-headline');
             wrapper.innerHTML = ''; 
 
-            var filtered = dataset.filter(function(item) {
+            let filtered = dataset.filter(item => {
                 return item.weather === weather && item.occasion === occasion && (type === 'visi' || item.type === type);
             });
 
@@ -385,18 +389,18 @@
             } else {
                 headline.innerText = "Rekomenduojami pasirinkimai";
                 
-                var isDesktop = window.innerWidth > 768;
-                var itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
+                const isDesktop = window.innerWidth > 768;
+                const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
 
-                itemsToShow.forEach(function(item) {
-                    var card = document.createElement('div');
+                itemsToShow.forEach(item => {
+                    const card = document.createElement('div');
                     card.className = 'bm-output-card';
-                    card.innerHTML = '\
-                        <div class="bm-card-tag">' + item.tag + '</div>\
-                        <h4 class="bm-card-title">' + item.title + '</h4>\
-                        <p class="bm-card-desc">' + item.desc + '</p>\
-                        <a href="' + baseUrl + item.url + '" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>\
-                    ';
+                    card.innerHTML = `
+                        <div class="bm-card-tag">${item.tag}</div>
+                        <h4 class="bm-card-title">${item.title}</h4>
+                        <p class="bm-card-desc">${item.desc}</p>
+                        <a href="${baseUrl}${item.url}" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>
+                    `;
                     wrapper.appendChild(card);
                 });
             }
