@@ -1,11 +1,14 @@
 <div class="bm-page-wrapper">
+    <!-- Akcentinė antraštė viršuje -->
     <div class="bm-main-headline-container">
         <h2 class="bm-main-headline">Pasirinkimų pagalbininkas</h2>
     </div>
 
+    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
     <div class="bm-grid-squares-section">
         <div class="bm-squares-container" id="bm-squares-main-container">
             
+            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai -->
             <div class="bm-square-box bm-left-square" id="bm-filter-block">
                 <div class="bm-square-inner">
                     <p class="bm-categories-title">Atraskite Lietuvių dizainerių gaminius, tinkančius orams ir progai</p>
@@ -47,6 +50,7 @@
                 </div>
             </div>
 
+            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai -->
             <div class="bm-square-box bm-right-square" id="bm-results-block">
                 <div class="bm-square-inner">
                     <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
@@ -55,6 +59,7 @@
                         <p class="bm-description">Pasirinkite kriterijus ir spauskite „Ieškoti rekomendacijų“.</p>
                     </div>
                     
+                    <!-- Mygtukas grįžimui į filtrus mobiliojoje versijoje -->
                     <button id="bm-back-to-filters" class="bm-kvadratai-back-btn" type="button">← Keisti kriterijus</button>
                 </div>
             </div>
@@ -65,7 +70,7 @@
 
 <style type="text/css">
 /* ==========================================================================
-       GRIEŽTAI IZOLIUOTI STILIAI
+       GRIEŽTAI IZOLIUOTI STILIAI - DESKTOP DVYNIAI KVADRATAI
        ========================================================================== */
 
     .bm-page-wrapper {
@@ -100,7 +105,7 @@
         padding: 0 !important;
     }
 
-    /* KONTEINERIS IR DESKTOP TINKLELIS */
+    /* KONTEINERIS IR GRIDAS */
     .bm-grid-squares-section {
         width: 100% !important;
         margin: 15px 0 25px 0 !important;
@@ -114,6 +119,7 @@
         width: 100% !important;
         margin: 0 auto !important;
         padding: 0 !important;
+        gap: 0 !important;
     }
 
     .bm-square-box {
@@ -123,7 +129,7 @@
         border: 1px solid #eaeaea !important; 
         padding: 40px 45px !important;
         display: flex !important;
-        align-items: center !important;
+        align-items: stretch !important; 
         justify-content: center !important;
         position: relative !important;
     }
@@ -135,7 +141,10 @@
     .bm-square-inner {
         width: 100% !important;
         max-width: 320px !important; 
-        margin: 0 auto !important;
+        margin: auto 0 !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     /* FILTRO ELEMENTAI */
@@ -188,7 +197,7 @@
         text-align: left !important; 
     }
 
-    /* VALDYMO LAUKELIAI */
+    /* VALDYMO ELEMENTAI */
     .bm-kvadratai-control, 
     .bm-kvadratai-submit,
     .bm-kvadratai-back-btn {
@@ -234,7 +243,7 @@
     }
 
     .bm-kvadratai-back-btn {
-        display: none !important; /* Rodomas tik mobilioje versijoje */
+        display: none !important; 
         justify-content: center !important;
         background: #f9f9f9 !important;
         color: #666 !important;
@@ -299,7 +308,7 @@
     }
 
     /* ==========================================================================
-       MOBILIOJI VERSIJA - INTERAKTYVUS PERSIJUNGIMAS (VIENAS IR TAS PATS AUKŠTIS)
+       MOBILIOJI VERSIJA 
        ========================================================================== */
     @media (max-width: 768px) {
         .bm-squares-container {
@@ -312,25 +321,28 @@
             height: 440px !important; 
             padding: 40px 35px !important;
             overflow: hidden !important;
-            border: 1px solid #eaeaea !important; /* Pilnas rėmelis atskiram kvadratui */
+            border: 1px solid #eaeaea !important;
+            align-items: center !important;
         }
 
-        /* Pagal nutylėjimą paslepiame rezultatų bloką mobiliojoje versijoje */
+        .bm-square-inner {
+            margin: 0 auto !important;
+        }
+
         #bm-results-block {
             display: none !important;
         }
 
-        /* Kai konteineris turi klasę 'show-results', keičiame blokų matomumą */
         .bm-squares-container.show-results #bm-filter-block {
             display: none !important;
         }
         
         .bm-squares-container.show-results #bm-results-block {
-            display: flex !important; /* Parodome rezultatų dėžutę */
+            display: flex !important;
         }
 
         .bm-kvadratai-back-btn {
-            display: flex !important; /* Įgaliname atgalinį mygtuką */
+            display: flex !important;
         }
     }
 </style>
@@ -353,12 +365,12 @@
             // --- ŠILTA ORŲ GRUPĖ ---
             { weather: "silta", occasion: "kasdienai", type: "audinys", tag: "Mezginiai", title: "Ploni megztiniai", desc: "Idealus pasirinkimas permainingai dienai, kai norisi švelnaus jaukumo sluoksniuojant.", url: "/pagrindinis-meniu/ploni-megztiniai" },
             { weather: "silta", occasion: "kasdienai", type: "sukneles", tag: "Klasika", title: "Stilingi sijonai", desc: "Midi ar maxi autorinio dizaino sijonai, puikiai derantys su baziniais marškinėliais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/sijonai" },
-            { weather: "silta", occasion: "sventei", type: "audinys", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros natūralių pluoštų dizainerių suknelės su elegantišku kritimu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-            { weather: "silta", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros dizainerių suknelės su elegantišku kritimu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-            { weather: "silta", occasion: "sventei", type: "audinys", tag: "Aksesuarai", title: "Šilko skarelės", desc: "Subtilus autorinės natūralaus šilko skarelės akcentas jūsų elegantiškam įvaizdžiui papildyti.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles/skareles" },
-            { weather: "silta", occasion: "sventei", type: "aksesuarai", tag: "Aksesuarai", title: "Šilko skarelės", desc: "Subtilus autorinės skarelės akcentas jūsų elegantiškam įvaizdžiui papildyti.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles/skareles" },
+            { weather: "silta", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Šilko ir medvilnės suknelės", desc: "Prabangios tekstūros natūralių pluoštų dizainerių suknelės su elegantišku kritimu.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
+            { weather: "silta", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Natūralaus šilko skarelės", desc: "Subtilus autorinės natūralaus šilko skarelės akcentas jūsų elegantiškam įvaizdžiui papildyti.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles/skareles" },
+            { weather: "silta", occasion: "sventei", type: "aksesuarai", tag: "Akcentas", title: "Išskirtiniai papuošalai", desc: "Rankų darbo autoriniai papuošalai, suteikiantys šventiniam deriniui rafinuotumo.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/papuosalai-jai" },
+            { weather: "silta", occasion: "sventei", type: "kostiumai", tag: "Elegancija", title: "Puošnūs kostiumėliai", desc: "Išskirtinio kirpimo, elegantiški lietuvių dizainerių kostiumėliai ypatingoms progoms ir vakarienėms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai" },
             { weather: "silta", occasion: "darbui", type: "kostiumai", tag: "Profesionalu", title: "Klasikiniai kostiumėliai", desc: "Nepriekaištingo kirpimo švarko ir kelnių/sijono dizainerių deriniai biure.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/klasikiniai-kostiumeliai" },
-            { weather: "silta", occasion: "darbui", type: "virsutiniai", tag: "Struktūra", title: "Kokybiški švarkai", desc: "Lietuvos kūrėjų švarkai, suteikiantys charakterio ir formalumo bet kokiam deriniui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/svarkai" },
+            { weather: "silta", occasion: "darbui", type: "virsutiniai", tag: "Struktūra", title: "Kokybiški švarkai", desc: "Lietuvos kūrėjų švarkai, suteikiantys charakterio ir formalumo bet kokiem deriniui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/svarkai" },
             { weather: "silta", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Laisvė", title: "Patogios kelnės", desc: "Laisvalaikio kelnės kartu su autorinio dizaino marškinėliais – patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/kelnes-2" },
             { weather: "silta", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Dizainerių kuprinės", desc: "Talpios ir stilingos odinės bei tekstilinės lietuvių kūrėjų kuprinės jūsų daiktams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/lietuviu-dizaineriu-kuprines" },
 
@@ -375,7 +387,6 @@
 
         const container = document.getElementById('bm-squares-main-container');
 
-        // Paieškos logika
         document.getElementById('bm-filter-submit').addEventListener('click', function() {
             const weather = document.getElementById('bm-weather-select').value;
             const occasion = document.getElementById('bm-occasion-select').value;
@@ -395,7 +406,6 @@
             } else {
                 headline.innerText = "Rekomenduojami pasirinkimai";
                 
-                // Ribojame: desktop rodo 2, mobile rodo 1 prekę, kad idealiai tilptų į dėžutę
                 const isDesktop = window.innerWidth > 768;
                 const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
 
@@ -412,11 +422,9 @@
                 });
             }
 
-            // AKTYVUOJAME PERSIJUNGIMĄ (tik mobiliems, valdoma per CSS klasę)
             container.classList.add('show-results');
         });
 
-        // Grįžimo atgal logika (mobiliems)
         document.getElementById('bm-back-to-filters').addEventListener('click', function() {
             container.classList.remove('show-results');
         });
