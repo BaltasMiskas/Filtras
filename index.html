@@ -103,7 +103,7 @@
     .bm-squares-container {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        align-items: stretch !important; /* Užtikrina, kad abu stulpeliai (kvadratai) būtų vienodo aukščio */
+        align-items: stretch !important; 
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -118,7 +118,7 @@
         border: 1px solid #eaeaea !important; 
         padding: 40px 45px !important;
         display: flex !important;
-        align-items: center !important; /* Centruoja turinį vertikaliai kvadrato viduje */
+        align-items: center !important; 
         justify-content: center !important;
         position: relative !important;
     }
@@ -325,9 +325,9 @@
 
 <script>
     (function() {
-        const baseUrl = 'https://www.baltasmiskas.lt';
+        var baseUrl = 'https://www.baltasmiskas.lt';
 
-        const dataset = [
+        var dataset = [
             // --- KARŠTA ORŲ GRUPĖ ---
             { weather: "karsta", occasion: "kasdienai", type: "audinys", tag: "Linas", title: "Lininiai deriniai", desc: "Lengvas, kvėpuojantis lino audinys – pats komfortiškiausias pasirinkimas karštai vasaros dienai.", url: "/pagrindinis-meniu/lininiai-deriniai" },
             { weather: "karsta", occasion: "kasdienai", type: "virsutiniai", tag: "Vasara", title: "Stilingi šortai", desc: "Laisvo kirpimo lietuvių dizainerių šortai patogiam ir lengvam judėjimui mieste.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kelnes/sortai" },
@@ -361,18 +361,21 @@
             { weather: "vejuota", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti džemperiai", desc: "Minkšti, stori kokybiškos medvilnės džemperiai su pūkeliu – visiškam patogumui.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" }
         ];
 
-        const container = document.getElementById('bm-squares-main-container');
+        var container = document.getElementById('bm-squares-main-container');
+        if (!container) return;
 
         document.getElementById('bm-filter-submit').addEventListener('click', function() {
-            const weather = document.getElementById('bm-weather-select').value;
-            const occasion = document.getElementById('bm-occasion-select').value;
-            const type = document.getElementById('bm-type-select').value;
+            var weather = document.getElementById('bm-weather-select').value;
+            var occasion = document.getElementById('bm-occasion-select').value;
+            var type = document.getElementById('bm-type-select').value;
 
-            const wrapper = document.getElementById('bm-recommendations-wrapper');
-            const headline = document.getElementById('bm-res-headline');
+            var wrapper = document.getElementById('bm-recommendations-wrapper');
+            var headline = document.getElementById('bm-res-headline');
+            if (!wrapper || !headline) return;
+            
             wrapper.innerHTML = ''; 
 
-            let filtered = dataset.filter(item => {
+            var filtered = dataset.filter(function(item) {
                 return item.weather === weather && item.occasion === occasion && (type === 'visi' || item.type === type);
             });
 
@@ -382,18 +385,18 @@
             } else {
                 headline.innerText = "Rekomenduojami pasirinkimai";
                 
-                const isDesktop = window.innerWidth > 768;
-                const itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
+                var isDesktop = window.innerWidth > 768;
+                var itemsToShow = isDesktop ? filtered.slice(0, 2) : filtered.slice(0, 1);
 
-                itemsToShow.forEach(item => {
-                    const card = document.createElement('div');
+                itemsToShow.forEach(function(item) {
+                    var card = document.createElement('div');
                     card.className = 'bm-output-card';
-                    card.innerHTML = `
-                        <div class="bm-card-tag">${item.tag}</div>
-                        <h4 class="bm-card-title">${item.title}</h4>
-                        <p class="bm-card-desc">${item.desc}</p>
-                        <a href="${baseUrl}${item.url}" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>
-                    `;
+                    card.innerHTML = '\
+                        <div class="bm-card-tag">' + item.tag + '</div>\
+                        <h4 class="bm-card-title">' + item.title + '</h4>\
+                        <p class="bm-card-desc">' + item.desc + '</p>\
+                        <a href="' + baseUrl + item.url + '" target="_blank" class="bm-card-link">Atrasti asortimentą →</a>\
+                    ';
                     wrapper.appendChild(card);
                 });
             }
