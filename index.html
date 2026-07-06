@@ -1,14 +1,11 @@
 <div class="bm-page-wrapper">
-    <!-- Akcentinė antraštė viršuje (Pakeitė mygtuką) -->
     <div class="bm-main-headline-container">
         <h2 class="bm-main-headline">Pasirinkimų pagalbininkas</h2>
     </div>
 
-    <!-- INTEGRUOTAS DVYNŲ KVADRATŲ BLOKAS -->
     <div class="bm-grid-squares-section">
         <div class="bm-squares-container">
             
-            <!-- Kairysis Kvadratas: 3 Žingsnių Filtrai (1:1) -->
             <div class="bm-square-box bm-left-square">
                 <div class="bm-square-inner">
                     <p class="bm-categories-title">Atraskite autorinius gaminius, idealiai tinkančius jūsų dienai ir progai</p>
@@ -50,7 +47,6 @@
                 </div>
             </div>
 
-            <!-- Dešinysis Kvadratas: Dinamiški Rezultatai (1:1) -->
             <div class="bm-square-box bm-right-square">
                 <div class="bm-square-inner">
                     <p class="bm-description-headline" id="bm-res-headline">Stiliaus gidas</p>
@@ -67,7 +63,7 @@
 
 <style type="text/css">
 /* ==========================================================================
-       GRIEŽTAI IZOLIUOTI STILIAI - PAREMTI JŪSŲ PAVYZDŽIU
+       GRIEŽTAI IZOLIUOTI STILIAI - SU SUMAŽINTAIS TARPAIS SUTAMPYMUI
        ========================================================================== */
 
     .bm-page-wrapper {
@@ -122,12 +118,13 @@
         aspect-ratio: 1 / 1 !important; 
         background: #ffffff !important;
         border: 1px solid #eaeaea !important; 
-        padding: 8% 10% !important; 
+        padding: 5% 8% !important; /* Optimizuota (buvo 8% 10%): turinys nespaudžia apatinio rėmelio */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         position: relative !important;
         overflow: hidden !important; 
+        box-sizing: border-box !important;
     }
 
     .bm-page-wrapper .bm-left-square {
@@ -144,7 +141,7 @@
     .bm-page-wrapper .bm-filter-form {
         display: flex !important;
         flex-direction: column !important;
-        gap: 10px !important;
+        gap: 8px !important; /* Optimizuota (buvo 10px): geresnis vertikalus telpantis tinklelis */
         width: 100% !important;
     }
 
@@ -163,10 +160,10 @@
     }
 
     .bm-page-wrapper .bm-categories-title {
-        font-size: 14px !important;
-        line-height: 1.5 !important;
+        font-size: 13px !important; /* Optimizuota (buvo 14px) */
+        line-height: 1.4 !important;
         color: #1a1a1a !important;
-        margin: 0 0 15px 0 !important;
+        margin: 0 0 10px 0 !important; /* Optimizuota (buvo 15px) */
         text-align: left !important; 
         letter-spacing: 0.3px !important;
     }
@@ -194,7 +191,7 @@
     .bm-page-wrapper .bm-kvadratai-control, 
     .bm-page-wrapper .bm-kvadratai-submit {
         box-sizing: border-box !important;
-        height: 44px !important; 
+        height: 40px !important; /* Optimizuota (buvo 44px): sutaupo vertikalios vietos rėmeliui */
         width: 100% !important;
         margin: 0 !important;
         outline: none !important;
@@ -220,13 +217,13 @@
         background: transparent !important;
         color: #a16207 !important;
         border: 1px solid #a16207 !important;
-        font-size: 12px !important;
+        font-size: 11px !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
         cursor: pointer !important;
         padding: 0 15px !important;
-        margin-top: 5px !important;
+        margin-top: 2px !important;
         transition: all 0.2s ease !important;
     }
 
