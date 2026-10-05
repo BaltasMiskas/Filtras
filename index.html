@@ -327,45 +327,52 @@
 <script>
     (function() {
         var baseUrl = 'https://www.baltasmiskas.lt';
+        var catPath = '/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims';
+
+        // Tikslūs, patikrinti e-parduotuvės kategorijų URL
+        var URLS = {
+            virsutiniai: catPath + '/paltai-striukes-lietpalciai',
+            audinys: catPath + '/megzti-drabuziai',
+            sukneles: catPath + '/lietuviu-dizaineriu-sukneles',
+            kostiumai: catPath + '/svarkai',
+            aksesuarai: catPath + '/salikai-skareles',
+            kvepalai: catPath + '/nisiniai-kvepalai'
+        };
 
         var dataset = [
             // --- ŽIEMA / SAUSA ŠALTA DIENA ---
-            { weather: "ziema_sausa", occasion: "kasdienai", type: "virsutiniai", tag: "Šiluma", title: "Šilti vilnos paltai", desc: "Aukščiausios kokybės natūralios vilnos paltai, garantuojantys jaukumą sausomis, šaltomis žiemomis.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/paltaistriukes" },
-            { weather: "ziema_sausa", occasion: "kasdienai", type: "aksesuarai", tag: "Jaukumas", title: "Šilti šalikai ir kepurės", desc: "Minkšti, stori vilnos bei kašmyro šalikai ir kepurės apsaugai nuo žvarbaus vėjo.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles" },
-            { weather: "ziema_sausa", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro mezginiai", desc: "Prabangus ir švelnus kašmyras šventiniams vakarams, kai norisi išskirtinės šilumos.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kasmyro-mezginiai" },
-            { weather: "ziema_sausa", occasion: "sventei", type: "sukneles", tag: "Elegancija", title: "Vilnonės suknelės", desc: "Elegantiško kirpimo šiltesnio audinio suknelės, puikiai tinkančios žiemiškomis progoms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-            { weather: "ziema_sausa", occasion: "darbui", type: "kostiumai", tag: "Profesionalu", title: "Šilti vilnos kostiumėliai", desc: "Struktūrizuoti, iš kokybiškos vilnos siūti kostiumėliai reprezentatyviam įvaizdžiui biure.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/kostiumeliai/klasikiniai-kostiumeliai" },
-            { weather: "ziema_sausa", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti džemperiai su pūkeliu", desc: "Minkšti, stori medvilnės džemperiai ir laisvalaikio kelnės jaukiam poilsiui gamtoje.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" },
+            { weather: "ziema_sausa", occasion: "kasdienai", type: "virsutiniai", tag: "Šiluma", title: "Šilti vilnos paltai", desc: "Aukščiausios kokybės natūralios vilnos paltai, garantuojantys jaukumą sausomis, šaltomis žiemomis.", url: URLS.virsutiniai },
+            { weather: "ziema_sausa", occasion: "kasdienai", type: "aksesuarai", tag: "Jaukumas", title: "Šilti šalikai ir kepurės", desc: "Minkšti, stori vilnos bei kašmyro šalikai ir kepurės apsaugai nuo žvarbaus vėjo.", url: URLS.aksesuarai },
+            { weather: "ziema_sausa", occasion: "sventei", type: "audinys", tag: "Prabanga", title: "Kašmyro ir vilnos mezginiai", desc: "Prabangi vilna ir kašmyras šventiniams vakarams, kai norisi išskirtinės šilumos.", url: URLS.audinys },
+            { weather: "ziema_sausa", occasion: "sventei", type: "sukneles", tag: "Elegancija", title: "Vilnonės suknelės", desc: "Elegantiško kirpimo šiltesnio audinio suknelės, puikiai tinkančios žiemiškomis progoms.", url: URLS.sukneles },
+            { weather: "ziema_sausa", occasion: "darbui", type: "kostiumai", tag: "Profesionalu", title: "Šilti vilnos kostiumėliai ir švarkai", desc: "Struktūrizuoti, iš kokybiškos vilnos siūti drabužiai reprezentatyviam įvaizdžiui biure.", url: URLS.kostiumai },
+            { weather: "ziema_sausa", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti mezginiai ir megztiniai", desc: "Minkšti, stori natūralaus pluošto megztiniai jaukiam poilsiui ir laisvalaikiui.", url: URLS.audinys },
 
-            // --- ŽIEMA / ŠLAPDRIBA, ŽVARBA (Drėgna ziema) ---
-            { weather: "ziema_slapia", occasion: "kasdienai", type: "virsutiniai", tag: "Apsauga", title: "Ilgi pūkiniai paltai ir striukės", desc: "Talpūs, neperpučiami bei vandeniui atsparūs žieminiai paltai apsaugai nuo šlapdribos.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/paltaistriukes" },
-            { weather: "ziema_slapia", occasion: "kasdienai", type: "aksesuarai", tag: "Praktiška", title: "Šiltos neperšlampamos kepurės ir šalikai", desc: "Sluoksniavimui skirti priedai, saugantys nuo žvarbios drėgmės ir vėjo.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/salikai-skareles" },
-            { weather: "ziema_slapia", occasion: "darbui", type: "virsutiniai", tag: "Funkcionalumas", title: "Apsauginiai viršutiniai drabužiai", desc: "Ilgesnio kirpimo striukės bei šiltinti lietpalčiai, išlaikantys reprezentatyvų įvaizdį.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
-            { weather: "ziema_slapia", occasion: "laisvalaikiui", type: "virsutiniai", tag: "Komfortas", title: "Šiltinti laisvalaikio komplektai", desc: "Drėgmei atsparūs viršutiniai sluoksniai ir šilti džemperiai aktyviam laisvalaikiui nelyjant.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" },
-            { weather: "ziema_slapia", occasion: "sventei", type: "sukneles", tag: "Stilius", title: "Ilgos suknelės su šiltu sluoksniu", desc: "Derinkite puošnias sukneles su ilgais apsauginiais viršutiniais drabužiais.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
+            // --- ŽIEMA / ŠLAPDRIBA, ŽVARBA ---
+            { weather: "ziema_slapia", occasion: "kasdienai", type: "virsutiniai", tag: "Apsauga", title: "Ilgi pūkiniai paltai ir striukės", desc: "Talpūs, neperpučiami bei vandeniui atsparūs žieminiai drabužiai apsaugai nuo šlapdribos.", url: URLS.virsutiniai },
+            { weather: "ziema_slapia", occasion: "kasdienai", type: "aksesuarai", tag: "Praktiška", title: "Šiltos kepurės ir šalikai", desc: "Sluoksniavimui skirti priedai, saugantys nuo žvarbios drėgmės ir vėjo.", url: URLS.aksesuarai },
+            { weather: "ziema_slapia", occasion: "darbui", type: "virsutiniai", tag: "Funkcionalumas", title: "Apsauginiai viršutiniai drabužiai", desc: "Ilgesnio kirpimo striukės bei šiltinti lietpalčiai, išlaikantys reprezentatyvų įvaizdį.", url: URLS.virsutiniai },
+            { weather: "ziema_slapia", occasion: "laisvalaikiui", type: "audinys", tag: "Komfortas", title: "Šilti megztiniai laisvalaikiui", desc: "Minkšti ir patogūs mezginiai aktyviam laisvalaikiui po apsauginiu sluoksniu.", url: URLS.audinys },
+            { weather: "ziema_slapia", occasion: "sventei", type: "sukneles", tag: "Stilius", title: "Ilgos suknelės su šiltu sluoksniu", desc: "Derinkite puošnias sukneles su ilgais apsauginiais viršutiniais drabužiais.", url: URLS.sukneles },
 
             // --- RUDUO / SAUSA, VĖSI DIENA ---
-            { weather: "ruduo_sausas", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai", desc: "Giedrai rudenio dienai – jaukūs, minkšti ir šilti ilgieji natūralios vilnos kardiganai.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/kardiganai" },
-            { weather: "ruduo_sausas", occasion: "kasdienai", type: "virsutiniai", tag: "Stilius", title: "Rudeniniai puspalčiai", desc: "Stilingi ir patogūs trumpi paltai bei puspalčiai kasdieniams miesto deriniams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/paltaistriukes" },
-            { weather: "ruduo_sausas", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Ilgos suknelės ilgomis rankovėmis", desc: "Autorinio dizaino ilgos suknelės, suderinančios grakštumą ir komfortą rudenį.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/lietuviu-dizaineriu-sukneles" },
-            { weather: "ruduo_sausas", occasion: "darbui", type: "kostiumai", tag: "Klasika", title: "Elegantiški švarkai", desc: "Kokybiški švarkai, suteikiantys formalumo ir papildomo sluoksnio šilumos.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/svarkai" },
-            { weather: "ruduo_sausas", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Odinės kuprinės ir rankinės", desc: "Patvarios natūralios odos kuprinės, atsparios įvairioms oro sąlygoms.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/rankines-2/lietuviu-dizaineriu-kuprines" },
+            { weather: "ruduo_sausas", occasion: "kasdienai", type: "audinys", tag: "Jaukumas", title: "Išskirtiniai kardiganai ir megztiniai", desc: "Giedrai rudenio dienai – jaukūs, minkšti ir šilti ilgieji natūralios vilnos kardiganai.", url: URLS.audinys },
+            { weather: "ruduo_sausas", occasion: "kasdienai", type: "virsutiniai", tag: "Stilius", title: "Rudeniniai puspalčiai ir striukės", desc: "Stilingi ir patogūs trumpi paltai bei puspalčiai kasdieniams miesto deriniams.", url: URLS.virsutiniai },
+            { weather: "ruduo_sausas", occasion: "sventei", type: "sukneles", tag: "Grakštumas", title: "Ilgos suknelės ilgomis rankovėmis", desc: "Autorinio dizaino ilgos suknelės, suderinančios grakštumą ir komfortą rudenį.", url: URLS.sukneles },
+            { weather: "ruduo_sausas", occasion: "darbui", type: "kostiumai", tag: "Klasika", title: "Elegantiški švarkai", desc: "Kokybiški švarkai, suteikiantys formalumo ir papildomo sluoksnio šilumos.", url: URLS.kostiumai },
+            { weather: "ruduo_sausas", occasion: "laisvalaikiui", type: "aksesuarai", tag: "Praktiška", title: "Aksesuaro ir stiliaus detalės", desc: "Jaukios ir praktiškos rudeninės detalės kasdieniam įvaizdžiui papildyti.", url: URLS.aksesuarai },
 
             // --- RUDUO / LIETINGA, DRĖGNA DIENA ---
-            { weather: "ruduo_slapias", occasion: "kasdienai", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, efektyviai saugantys nuo vėjo bei rudens lietaus.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
-            { weather: "ruduo_slapias", occasion: "darbui", type: "virsutiniai", tag: "Elegantiška apsauga", title: "Klasikiniai lietpalčiai biurui", desc: "Elegantiški, neperšlampami lietpalčiai, puikiai tinkantys užsivilkti ant darbinio kostiumo.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/paltai-striukes-lietpalciai/lietpalciai" },
-            { weather: "ruduo_slapias", occasion: "laisvalaikiui", type: "audinys", tag: "Laisvė", title: "Džemperiai ir laisvalaikio kelnės", desc: "Minkšti medvilnės komplektai po neperšlampama striuke patogiems pasivaikščiojimams.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/megzti-drabuziai/dzemperiai-2" },
-            { weather: "ruduo_slapias", occasion: "sventei", type: "aksesuarai", tag: "Aroma", title: "Nišiniai kvepalai", desc: "Gilesni, šilti medžio ir prieskonių aromatai, skambantys ypač prabangiai drėgną rudenį.", url: "/pagrindinis-meniu/lietuvos-dizaineriu-drabuziai-ir-aksesuarai-moterims/nisiniai-kvepalai" }
+            { weather: "ruduo_slapias", occasion: "kasdienai", type: "virsutiniai", tag: "Apsauga", title: "Stilingi lietpalčiai", desc: "Lietuvos dizainerių kurti lietpalčiai, efektyviai saugantys nuo vėjo bei rudens lietaus.", url: URLS.virsutiniai },
+            { weather: "ruduo_slapias", occasion: "darbui", type: "virsutiniai", tag: "Elegantiška apsauga", title: "Klasikiniai lietpalčiai biurui", desc: "Elegantiški, neperšlampami lietpalčiai, puikiai tinkantys užsivilkti ant darbinio kostiumo.", url: URLS.virsutiniai },
+            { weather: "ruduo_slapias", occasion: "laisvalaikiui", type: "audinys", tag: "Laisvė", title: "Jaukūs mezginiai", desc: "Minkšti komplektai po neperšlampama striuke patogiems pasivaikščiojimams.", url: URLS.audinys },
+            { weather: "ruduo_slapias", occasion: "sventei", type: "aksesuarai", tag: "Aroma", title: "Nišiniai kvepalai", desc: "Gilesni, šilti medžio ir prieskonių aromatai, skambantys ypač prabangiai drėgną rudenį.", url: URLS.kvepalai }
         ];
 
         var container = document.getElementById('bm-squares-main-container');
         if (!container) return;
 
-        var submitButton = document.getElementById('bm-filter-submit');
-        var backButton = document.getElementById('bm-back-to-filters');
-        if (!submitButton || !backButton) return;
-
-        submitButton.addEventListener('click', function() {
+        document.getElementById('bm-filter-submit').addEventListener('click', function() {
             var weather = document.getElementById('bm-weather-select').value;
             var occasion = document.getElementById('bm-occasion-select').value;
             var type = document.getElementById('bm-type-select').value;
@@ -376,13 +383,28 @@
             
             wrapper.innerHTML = ''; 
 
+            // 1 etapas: ieškoma tikslaus atitikmens pagal visus 3 filtrus
             var filtered = dataset.filter(function(item) {
                 return item.weather === weather && item.occasion === occasion && (type === 'visi' || item.type === type);
             });
 
+            // 2 etapas (Fallback): jei tiesioginio atitikmens nėra, ieškoma pagal orus ir progą
+            if (filtered.length === 0) {
+                filtered = dataset.filter(function(item) {
+                    return item.weather === weather && item.occasion === occasion;
+                });
+            }
+
+            // 3 etapas (Fallback 2): jei vis dar nėra, ieškoma tiesiog pagal drabužio tipą
+            if (filtered.length === 0 && type !== 'visi') {
+                filtered = dataset.filter(function(item) {
+                    return item.type === type;
+                });
+            }
+
             if (filtered.length === 0) {
                 headline.innerText = "Rezultatai";
-                wrapper.innerHTML = '<p class="bm-description">Šiuo metu pagal pasirinktus kriterijus konkrečių rekomendacijų neturime. Pabandykite pakeisti 3 žingsnio pasirinkimą į „Rodyti visą asortimentą“.</p>';
+                wrapper.innerHTML = '<p class="bm-description">Pagal pasirinktus kriterijus specifinių rekomendacijų neturime. Kviečiame peržiūrėti pilną katalogo asortimentą.</p>';
             } else {
                 headline.innerText = "Rekomenduojami pasirinkimai";
                 
@@ -392,7 +414,10 @@
                 itemsToShow.forEach(function(item) {
                     var card = document.createElement('div');
                     card.className = 'bm-output-card';
-                    card.innerHTML = `<div class="bm-card-tag">${item.tag}</div><h4 class="bm-card-title">${item.title}</h4><p class="bm-card-desc">${item.desc}</p><a href="${baseUrl}${item.url}" target="_blank" rel="noopener noreferrer" class="bm-card-link">Atrasti asortimentą</a>`;
+                    card.innerHTML = '<div class="bm-card-tag">' + item.tag + '</div>' +
+                                     '<h4 class="bm-card-title">' + item.title + '</h4>' +
+                                     '<p class="bm-card-desc">' + item.desc + '</p>' +
+                                     '<a href="' + baseUrl + item.url + '" target="_blank" class="bm-card-link">Atrasti asortimentą</a>';
                     wrapper.appendChild(card);
                 });
             }
@@ -400,7 +425,7 @@
             container.classList.add('show-results');
         });
 
-        backButton.addEventListener('click', function() {
+        document.getElementById('bm-back-to-filters').addEventListener('click', function() {
             container.classList.remove('show-results');
         });
     })();
