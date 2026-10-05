@@ -361,7 +361,11 @@
         var container = document.getElementById('bm-squares-main-container');
         if (!container) return;
 
-        document.getElementById('bm-filter-submit').addEventListener('click', function() {
+        var submitButton = document.getElementById('bm-filter-submit');
+        var backButton = document.getElementById('bm-back-to-filters');
+        if (!submitButton || !backButton) return;
+
+        submitButton.addEventListener('click', function() {
             var weather = document.getElementById('bm-weather-select').value;
             var occasion = document.getElementById('bm-occasion-select').value;
             var type = document.getElementById('bm-type-select').value;
@@ -388,7 +392,7 @@
                 itemsToShow.forEach(function(item) {
                     var card = document.createElement('div');
                     card.className = 'bm-output-card';
-                    card.innerHTML = `<div class="bm-card-tag">\({item.tag}</div><h4 class="bm-card-title">\){item.title}</h4><p class="bm-card-desc">\({item.desc}</p><a href="\){baseUrl}${item.url}" target="_blank" class="bm-card-link">Atrasti asortimentą</a>`;
+                    card.innerHTML = `<div class="bm-card-tag">${item.tag}</div><h4 class="bm-card-title">${item.title}</h4><p class="bm-card-desc">${item.desc}</p><a href="${baseUrl}${item.url}" target="_blank" rel="noopener noreferrer" class="bm-card-link">Atrasti asortimentą</a>`;
                     wrapper.appendChild(card);
                 });
             }
@@ -396,7 +400,7 @@
             container.classList.add('show-results');
         });
 
-        document.getElementById('bm-back-to-filters').addEventListener('click', function() {
+        backButton.addEventListener('click', function() {
             container.classList.remove('show-results');
         });
     })();
